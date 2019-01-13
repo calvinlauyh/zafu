@@ -19,7 +19,7 @@ describe("HormomorphicWorkerAPI", () => {
         it("should calculate the score from the result", () => {
             sandbox.stub(child_process, "exec").callsFake((_cmd, _options, callback) => {
                 const err = null;
-                const stdout = "3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r, BTC, 30, 50";
+                const stdout = "30, 50";
                 const stderr = null;
                 callback(err, stdout, stderr);
                 return {};

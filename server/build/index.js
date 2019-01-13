@@ -16,11 +16,8 @@ const main = async () => {
     app.get("/:currency/:address/score", (req, res) => {
         hormomorphicWorkerAPI
             .getAddressScore(req.params.currency, req.params.address)
-            .then((score) => {
-            res.send({
-                success: true,
-                score,
-            });
+            .then((result) => {
+            res.send(Object.assign({ success: true }, result));
         });
     });
     app.listen(SERVER_PORT, () => {
