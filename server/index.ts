@@ -20,10 +20,10 @@ const main = async () => {
         (req: express.Request, res: express.Response) => {
             hormomorphicWorkerAPI
                 .getAddressScore(req.params.currency, req.params.address)
-                .then((score: number) => {
+                .then((result: any) => {
                     res.send({
                         success: true,
-                        score,
+                        ...result,
                     });
                 });
         },

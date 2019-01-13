@@ -8,7 +8,7 @@ block content
     h2 Address Query
   form#safu-form.m-5(autocomplete="off")
     #address-input-container.current-progress-text
-      span Is My
+      span Is 
       select#currency-input(name="currency").ml-2.ml-1
         option(value="BTC") BTC
         option(value="ETH`") ETH
@@ -23,6 +23,11 @@ block content
     #check-button.text-center.mt-5
       button.button.btn.btn-primary Check ZAFU
     #address-safu-result(style="display: none; opacity: 0")
+      #long-short-result
+        span Longs:
+        span#long-result.mr-2.ml-2
+        span Shorts:
+        span#short-result.mr-2.ml-2
       #address-safu-success
         .exchange-withdrawal-address-input.m-5
           span.mr-2.address-inputed
