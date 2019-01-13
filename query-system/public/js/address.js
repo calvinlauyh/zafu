@@ -47,6 +47,8 @@ $(document).ready(() => {
         $('#check-button').hide();
         $('.address-inputed').text($('#encrypted-address-input').val());
         $('.score').text(result.score);
+        $('#long-result').text(result.positiveScore);
+        $('#short-result').text(result.negativeScore);
         if (result.score > 50) {
           $('#address-safu-success').hide();
           $('#address-safu-error').show();

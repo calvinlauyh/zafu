@@ -3,7 +3,7 @@ import path = require("path");
 import { logger } from "../logger";
 
 export class HormomorphicWorkerAPI {
-  async getAddressScore(currency: string, address: string): Promise<number> {
+  async getAddressScore(currency: string, address: string): Promise<any> {
     return new Promise((resolve, reject) => {
       logger.log(`python ${path.join(process.cwd(), "./hbc_db.py")} "${currency} ${address}"`);
       child_process.exec(
@@ -15,7 +15,14 @@ export class HormomorphicWorkerAPI {
             reject(err);
           }
 
-          resolve(this.calculateScoreFromQueryResult(stdout.trim()));
+          const tokens = stdout.split(",");
+          const positiveScore = Number(tokens[0].trim());
+          const negativeScore = Number(tokens[1].trim());
+          resolve({
+            positiveScore,
+            negativeScore,
+            score: this.calculateScoreFromQueryResult(stdout.trim())
+          });
         }
       );
     });
@@ -25,10 +32,13 @@ export class HormomorphicWorkerAPI {
     const tokens = result.split(",");
     const positiveScore = Number(tokens[0].trim());
     const negativeScore = Number(tokens[1].trim());
-    return 50 - (positiveScore - negativeScore);
+    const normalizedPositive = 50 - (positiveScore / 500) * 50;
+    const normalizedNegative = ((negativeScore / 500) * 50) + 50;
+    const finalScore = (normalizedPositive + normalizedNegative) / 2;
+    return finalScore;
   }
 
-  async submitAddressScore(address: string): Promise<number> {
+  async submitAddressScore(address: string): Promise<any> {
     return new Promise((resolve, reject) => {
       logger.log(`${path.join(process.cwd(), "./fake-score-worker.sh")} ${address}`);
       child_process.exec(
