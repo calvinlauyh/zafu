@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      .col
+        .exchange-wallet-card.card
+          img.card-img-top.card-img-spacing(src="/images/deposit.png", alt="")
+          .card-body.text-center
+            h5.card-title Deposit (Coming Soon)
+            p.card-text Deposit funds to your Excahnge account
+            a.btn.btn-light Deposit
+      .col
+        .exchange-wallet-card.a-unstyled.card
+          img.card-img-top.card-img-spacing(src="/images/withdrawal.png", alt="")
+          .card-body.text-center
+            h5.card-title Withdrawal
+            p.card-text Withdrawal your funds to a SAFU external address
+            a.btn.btn-primary(href="/exchange/withdrawal") Withdrawal

@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es2017",
+
+        "outDir": "./build",
+
+        "pretty": true,
+        "removeComments": true,
+        "sourceMap": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    },
+}

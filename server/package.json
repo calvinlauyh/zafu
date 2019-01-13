@@ -1,0 +1,30 @@
+{
+  "name": "SAFU",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Calvin Lau",
+  "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "prestart": "yarn build",
+    "start": "node --require source-map-support/register build/index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "source-map-support": "^0.5.10",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/express": "^4.16.0",
+    "@types/lodash": "^4.14.119",
+    "@types/mocha": "^5.2.5",
+    "@types/sinon": "^7.0.3",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "sinon": "^7.2.2"
+  }
+}
